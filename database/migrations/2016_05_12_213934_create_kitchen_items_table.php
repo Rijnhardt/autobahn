@@ -18,7 +18,7 @@ class CreateKitchenItemsTable extends Migration
             $table->integer('order_item_id')->unsigned();
             $table->foreign('order_item_id')->references('id')->on('order_items');
             
-            $table->foreign('is_completed');
+            $table->boolean('is_completed');
             $table->dateTime('completed_at');
             
             $table->timestamps();
