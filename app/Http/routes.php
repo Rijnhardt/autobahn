@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('orders', 'OrderController');
+
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
