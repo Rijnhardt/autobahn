@@ -183,7 +183,7 @@ class ProductsSeeder extends Seeder
         //21
         DB::table('products')->insert([
             'name' => 'Chocolates',
-            'price' => 5.50,
+            'price' => 6,
             'is_prepared' => false,
             'product_group_id' => 4
         ]);

@@ -10,9 +10,4 @@ class KitchenItem extends Model
     {
         return $this->belongsTo(OrderItem::class);
     }
-    
-    public function order()
-    {
-        return orderItem()->order()->get();
-    }
 }

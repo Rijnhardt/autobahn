@@ -1,0 +1,102 @@
+body {
+    font-size: 1.5em;
+    overflow: hidden;
+}
+
+glyphicon {
+    color: #111111;
+    
+}
+
+button.change {
+    background-color:transparent; 
+    border: solid 0px transparent;
+}
+
+button.product, button.product_group {
+    background:#DDDDDD;
+    border-radius:10px;
+    border-width:1px;
+    border-color:#333333;
+    width:100px;
+    height:100px;
+    padding:10px;
+    margin:10px;
+    color:#000000;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+button.product_group {
+    background:#444444;
+    color:#EEEEEE;
+    border-color: #DDDDDD;
+    border-width: 2px;
+}
+
+button.order_item {
+    display: block;
+}
+
+#content {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#sidebar {
+    width: 39%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+table.order_items {
+    width: 98%;
+    min-width: 130px !important;
+}
+td.action  {
+    width: 130px;
+}
+
+tr.total, tr.tender, tr.change {
+    font-size:1.5em;
+}
+
+input.tender {
+    font-size: 1em;
+    width: 130px;
+}
+
+button.checkout {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    font-size: 2em;
+        background:#DDDDDD;
+            border-radius:10px;
+    border-width:1px;
+        border-color:#333333;
+            padding:10px;
+    margin:10px;
+        color:#000000;
+}
+
+input.tender {
+    color:#000000;
+}
+
+button.tenderamount {
+    font-size: 2em;
+    background:transparent;
+    color:#DDDDDD;
+    border-radius:10px;
+    border-width:1px;
+    border-color:#DDDDDD;
+    width:80px;
+    height:50px;
+    padding:6px;
+    margin:10px;
+    vertical-align: top;
+    font-weight: bold;
+}

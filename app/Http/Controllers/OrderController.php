@@ -28,8 +28,13 @@ class OrderController extends Controller
     {
         $products = \App\ProductGroup::with('products')->get();
         
-        return $products;
+        return view('orders.create', ['products' => $products]);
         
+    }
+    
+    public function getProducts()
+    {
+        return \App\ProductGroup::with('products')->get();
     }
 
     /**
@@ -40,7 +45,52 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $requestOrderItems = $request->all();
+		$orderItems = [];
+		
+		$total = 0;
+		
+		$order = new \App\Order;
+		$order->total = 0;
+		$order->user_id = \Auth::user()->id;
+		
+		$order->save();
+		
+        $orderRef = $order->id;
+        
+        foreach($requestOrderItems as $item)
+        {
+            $orderItem = new \App\OrderItem;
+            $orderItem->qty = $item["qty"];
+            $orderItem->order_id = $orderRef;
+            
+            $product = \App\Product::find($item["product_id"]);
+            
+            $total = $total + ($orderItem->qty * $product->price);
+            
+            $orderItem->product_id = $product->id;
+            
+            $orderItem->save();
+            
+            if ($product->is_prepared) {
+                $kitchenItem = new \App\KitchenItem;
+                $kitchenItem->order_item_id = $orderItem->id;
+                $kitchenItem->save();
+            } else {
+                $orderItem->is_completed = true;
+                $orderItem->save();
+            }
+            
+            $orderItems[] = $orderItem->qty . " x " . $product->name;
+        }
+        
+        $order->total = $total;
+        $order->items = sizeof($orderItems);
+
+        $order->save();        
+        
+        return ["items" => $orderItems, "ref" => $orderRef, "total" => $total, "itemCount" => $order->items];
     }
 
     /**
