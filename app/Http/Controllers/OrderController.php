@@ -77,9 +77,6 @@ class OrderController extends Controller
                 $kitchenItem = new \App\KitchenItem;
                 $kitchenItem->order_item_id = $orderItem->id;
                 $kitchenItem->save();
-            } else {
-                $orderItem->is_completed = true;
-                $orderItem->save();
             }
             
             $orderItems[] = $orderItem->qty . " x " . $product->name;
